@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "9488ff82-8312-48bc-98a2-997383e5042c",
+		"name": "More Python API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22810484"
+	},
+	"item": [
+		{
+			"name": "fastapi - examples",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"     pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON response body test\", () => {\r",
+							"\tconst responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.eql([1,[1,2,3],[{\"id\":0,\"name\":\"a\"},{\"id\":1,\"name\":\"a\"},{\"id\":2,\"name\":\"c\"}],[1,2,3],[{\"id\":0,\"name\":\"a\"},{\"id\":1,\"name\":\"a\"},{\"id\":2,\"name\":\"c\"}]])\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/examples",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"examples"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "serverless - examples",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"     pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON response body test\", () => {\r",
+							"\tconst responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.eql([1,[1,2,3],[{\"id\":0,\"name\":\"a\"},{\"id\":1,\"name\":\"a\"},{\"id\":2,\"name\":\"c\"}],[1,2,3],[{\"id\":0,\"name\":\"a\"},{\"id\":1,\"name\":\"a\"},{\"id\":2,\"name\":\"c\"}]])\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/dev/examples",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"dev",
+						"examples"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "serverless - psqljson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"     pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON response body test\", () => {\r",
+							"\tconst responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.eql([0, \"a\"])\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/dev/psqljson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"dev",
+						"psqljson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fastapi - heartbeat",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"     pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON response body test\", () => {\r",
+							"\tconst responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.eql({\"message\":\"Hello World\"})\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
