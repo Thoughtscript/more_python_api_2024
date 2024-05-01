@@ -1,0 +1,22 @@
+service: serverless
+
+provider:
+  name: aws
+  runtime: python3.9 # This doesn't yet support 3.12.3
+
+functions:
+  examples:
+    handler: handler.examples
+    events:
+      - http:
+          path: examples
+          method: get
+  psqljson:
+    handler: handler.psql_json
+    events:
+      - http:
+          path: psqljson
+          method: get
+
+plugins:
+  - serverless-offline

@@ -1,0 +1,23 @@
+FROM python:3.12.3
+
+RUN echo "Creating working dir and copying files"
+RUN mkdir /app
+WORKDIR /app
+COPY . .
+
+# update pip globally within the container
+RUN python3 -m pip install --upgrade pip
+# download dependencies to the image and container
+RUN python3 -m pip install -r requirements.txt
+
+RUN apt-get update \
+    && apt-get install -y curl \
+    && curl -sL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs
+
+# install serverless
+RUN npm install -g serverless
+RUN npm install --save-dev serverless-offline
+
+# Start function!
+CMD ["serverless", "offline", "--host", "0.0.0.0", "--httpPort", "3000"]
