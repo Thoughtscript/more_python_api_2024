@@ -1,5 +1,6 @@
 import json
 import psycopg2
+import urllib3
 
 def examples(event, context):
     conn = psycopg2.connect(dbname="postgres", user="testuser", password="testpassword", host="postgres", port="5432")
@@ -24,3 +25,8 @@ def psql_json(event, context):
     conn.close()
 
     return {"statusCode": 200, "body": json.dumps(record_set)}
+
+def other_api(event, context):
+    http = urllib3.PoolManager()
+    response = http.request("GET", "http://fastapi:8000/examples", headers={"Content-Type": "application/json"})
+    return {"statusCode": 200, "body": str(response.json())} # todo - this could be parsed more elegantly - causes issues with postman but I found a workaround

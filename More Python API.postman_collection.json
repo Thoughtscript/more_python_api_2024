@@ -14,12 +14,12 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function () {\r",
-							"     pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"JSON response body test\", () => {\r",
-							"\tconst responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson).to.eql([1,[1,2,3],[{\"id\":0,\"name\":\"a\"},{\"id\":1,\"name\":\"a\"},{\"id\":2,\"name\":\"c\"}],[1,2,3],[{\"id\":0,\"name\":\"a\"},{\"id\":1,\"name\":\"a\"},{\"id\":2,\"name\":\"c\"}]])\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.eql([1, [1, 2, 3], [{ 'id': 0, 'name': 'a' }, { 'id': 1, 'name': 'a' }, { 'id': 2, 'name': 'c' }], [1, 2, 3], [{ 'id': 0, 'name': 'a' }, { 'id': 1, 'name': 'a' }, { 'id': 2, 'name': 'c' }]])\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -155,6 +155,63 @@
 					"port": "8001",
 					"path": [
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "serverless - otherapi",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON response body test\", () => {\r",
+							"    const dataStream = JSON.parse(JSON.stringify(pm.response)).stream.data;\r",
+							"    pm.expect(dataStream).to.eql(\r",
+							"        [91, 49, 44, 32, 91, 49, 44, 32, 50, 44, 32, 51, 93, 44, 32, 91, 123, 39, 105, 100, 39, 58, 32, 48, 44, 32, 39, 110, 97, 109, 101, 39, 58, 32, 39, 97, 39, 125, 44, 32, 123, 39, 105, 100, 39, 58, 32, 49, 44, 32, 39, 110, 97, 109, 101, 39, 58, 32, 39, 97, 39, 125, 44, 32, 123, 39, 105, 100, 39, 58, 32, 50, 44, 32, 39, 110, 97, 109, 101, 39, 58, 32, 39, 99, 39, 125, 93, 44, 32, 91, 49, 44, 32, 50, 44, 32, 51, 93, 44, 32, 91, 123, 39, 105, 100, 39, 58, 32, 48, 44, 32, 39, 110, 97, 109, 101, 39, 58, 32, 39, 97, 39, 125, 44, 32, 123, 39, 105, 100, 39, 58, 32, 49, 44, 32, 39, 110, 97, 109, 101, 39, 58, 32, 39, 97, 39, 125, 44, 32, 123, 39, 105, 100, 39, 58, 32, 50, 44, 32, 39, 110, 97, 109, 101, 39, 58, 32, 39, 99, 39, 125, 93, 93])\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+						"type": "text",
+						"uuid": "e65d2c5b-064c-40c3-b9d4-a3535312803f"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/dev/otherapi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"dev",
+						"otherapi"
 					]
 				}
 			},

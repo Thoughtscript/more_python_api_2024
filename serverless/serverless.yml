@@ -17,6 +17,12 @@ functions:
       - http:
           path: psqljson
           method: get
+  otherapi:
+    handler: handler.other_api
+    events:
+      - http:
+          path: otherapi
+          method: get
 
 plugins:
   - serverless-offline

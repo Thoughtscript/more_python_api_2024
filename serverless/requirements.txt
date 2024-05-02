@@ -1,1 +1,2 @@
 psycopg2
+urllib3 # https://stackoverflow.com/questions/40741282/cannot-use-requests-module-on-aws-lambda
