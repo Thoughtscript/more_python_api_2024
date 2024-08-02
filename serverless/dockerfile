@@ -16,7 +16,7 @@ RUN apt-get update \
     && apt-get install -y nodejs
 
 # install serverless
-RUN npm install -g serverless
+RUN npm install -g serverless@3.39.0
 RUN npm install --save-dev serverless-offline
 
 # Start function!
