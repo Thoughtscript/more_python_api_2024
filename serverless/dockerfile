@@ -10,9 +10,12 @@ RUN python3 -m pip install --upgrade pip
 # download dependencies to the image and container
 RUN python3 -m pip install -r requirements.txt
 
+# Temporarily downgrade to LTS 21.x - this is only used here for serverless@3.39.0
+# serverless@4.x requires a paid subscription
+# TODO - upgrade and find a better workaround for newer serverless
 RUN apt-get update \
     && apt-get install -y curl \
-    && curl -sL https://deb.nodesource.com/setup_22.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_21.x | bash - \
     && apt-get install -y nodejs
 
 # install serverless
